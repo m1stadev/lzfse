@@ -23,6 +23,7 @@
 
 import os
 from setuptools import setup, Extension
+from pathlib import Path
 
 lzfse_dir = os.path.join('lzfse', 'src')
 lzfse_srcs = [os.path.join(lzfse_dir, x) for x in os.listdir(lzfse_dir) if x.endswith('.c') and x != 'lzfse_main.c']
@@ -33,17 +34,17 @@ lzfse = Extension('liblzfse',
                    include_dirs=[lzfse_dir],
                    language='c')
                    
-f = open('README', 'r')
-description_from_readme = '<pre>' + f.read() + '</pre>'
-f.close()
+description_from_readme = '<pre>' + Path('README').read_text() + '</pre>'
 
 setup(name='pyliblzfse',
       version='0.4.1',
       license='MIT',
       author='Yogesh Khatri',
       author_email='yogesh@swiftforensics.com',
+      maintainer="m1sta",
+      maintainer_email="adamhamdi31@gmail.com",
       description='Python bindings for the LZFSE reference implementation',
       long_description=description_from_readme,
       long_description_content_type='text/markdown',
-      url='https://github.com/ydkhatri/pyliblzfse',
+      url='https://github.com/m1stadev/pyliblzfse',
       ext_modules=[lzfse])
