@@ -1,6 +1,6 @@
 name: Build wheels for Linux/macOS/Windows, build sdist, and publish to Test PyPI
 
-on: [workflow_dispatch]
+on: workflow_dispatch
 
 jobs:
   build_wheels:
