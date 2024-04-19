@@ -21,30 +21,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
-from setuptools import setup, Extension
+
 from pathlib import Path
 
-lzfse_dir = os.path.join('lzfse', 'src')
-lzfse_srcs = [os.path.join(lzfse_dir, x) for x in os.listdir(lzfse_dir) if x.endswith('.c') and x != 'lzfse_main.c']
+from setuptools import Extension, setup
 
-lzfse = Extension('lzfse',
-                   sources=lzfse_srcs + ['pylzfse.c'],
-                   extra_compile_args=['-std=c99'],
-                   include_dirs=[lzfse_dir],
-                   language='c')
-                   
-description_from_readme = '<pre>' + Path('README').read_text() + '</pre>'
+lzfse_src_path = Path('lzfse/src')
+lzfse_src = [
+    *[str(f) for f in lzfse_src_path.glob('*.c') if f != 'lzfse/src/lzfse_main.c'],
+    'pylzfse.c'
+]
 
-setup(name='lzfse',
-      version='0.4.2',
-      license='MIT',
-      author='Yogesh Khatri',
-      author_email='yogesh@swiftforensics.com',
-      maintainer="m1sta",
-      maintainer_email="adamhamdi31@gmail.com",
-      description='Python bindings for the LZFSE reference implementation',
-      long_description=description_from_readme,
-      long_description_content_type='text/markdown',
-      url='https://github.com/m1stadev/lzfse',
-      ext_modules=[lzfse])
+setup(
+    ext_modules=[
+            Extension(
+                  'lzfse',
+                  sources=lzfse_src,
+                  include_dirs=[str(lzfse_src_path)],
+            )
+    ]
+)
