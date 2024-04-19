@@ -163,8 +163,8 @@ static PyMethodDef LzfseMethods[] = {
 #if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "liblzfse",
-    "Python module for LZFSE",
+    "lzfse",
+    "Python bindings for the LZFSE reference implementation",
     -1,
     LzfseMethods
 };
@@ -172,7 +172,7 @@ static struct PyModuleDef moduledef = {
 
 PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-PyInit_liblzfse(void)
+PyInit_lzfse(void)
 {
     PyObject *m = PyModule_Create(&moduledef);
     if (!m)
@@ -180,12 +180,12 @@ PyInit_liblzfse(void)
 #else
 initlzfse(void)
 {
-    PyObject *m = Py_InitModule("liblzfse", LzfseMethods);
+    PyObject *m = Py_InitModule("lzfse", LzfseMethods);
     if (!m)
         return;
 #endif
 
-    LzfseError = PyErr_NewException("liblzfse.error", NULL, NULL);
+    LzfseError = PyErr_NewException("lzfse.error", NULL, NULL);
     if (LzfseError) {
         Py_INCREF(LzfseError);
         PyModule_AddObject(m, "error", LzfseError);

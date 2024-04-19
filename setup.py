@@ -28,7 +28,7 @@ from pathlib import Path
 lzfse_dir = os.path.join('lzfse', 'src')
 lzfse_srcs = [os.path.join(lzfse_dir, x) for x in os.listdir(lzfse_dir) if x.endswith('.c') and x != 'lzfse_main.c']
 
-lzfse = Extension('liblzfse',
+lzfse = Extension('lzfse',
                    sources=lzfse_srcs + ['pylzfse.c'],
                    extra_compile_args=['-std=c99'],
                    include_dirs=[lzfse_dir],
