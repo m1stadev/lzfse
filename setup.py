@@ -36,8 +36,8 @@ lzfse = Extension('liblzfse',
                    
 description_from_readme = '<pre>' + Path('README').read_text() + '</pre>'
 
-setup(name='pyliblzfse',
-      version='0.4.1',
+setup(name='lzfse',
+      version='0.4.2',
       license='MIT',
       author='Yogesh Khatri',
       author_email='yogesh@swiftforensics.com',
@@ -46,5 +46,5 @@ setup(name='pyliblzfse',
       description='Python bindings for the LZFSE reference implementation',
       long_description=description_from_readme,
       long_description_content_type='text/markdown',
-      url='https://github.com/m1stadev/pyliblzfse',
+      url='https://github.com/m1stadev/lzfse',
       ext_modules=[lzfse])
