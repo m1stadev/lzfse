@@ -15,7 +15,7 @@ lzfse
 </p>
 
 <p align="center">
-Python bindings for the <a href="https://https://github.com/lzfse/lzfse">LZFSE</a> reference implementation.
+Python bindings for the <a href="https://github.com/lzfse/lzfse">LZFSE</a> reference implementation.
 </p>
 
 <p align="center">
